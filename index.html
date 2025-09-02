@@ -1,236 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Авточасти Онлайн</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>auto tanev — Авточасти</title>
+  <meta name="description" content="Auto Tanev — авточасти и консумативи. Пишете ни какво търсите и ще ви предложим точната част."/>
+  <meta name="theme-color" content="#FFD24D">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; background: #fafafa;
+    :root{
+      --brand:#FFD24D;
+      --ink:#2E3640;
+      --ink-2:#4B5563;
+      --off:#111418;
+      --ring:rgba(0,0,0,.08);
+      --radius:18px;
+      --shadow:0 12px 32px rgba(0,0,0,.10);
     }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink); background:#fffdf7; line-height:1.45;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
 
-    /* Sticky navbar */
-    .navbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      padding: 12px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .navbar a {
-      margin: 0 8px;
-      text-decoration: none;
-      color: #333;
-    }
-    .navbar.is-scrolled {
-      box-shadow: 0 4px 10px rgba(0,0,0,.06);
-    }
+    /* HEADER */
+    .header{position:sticky;top:0;z-index:50;background:var(--off);border-bottom:1px solid #00000030}
+    .nav{max-width:1180px;margin:auto;display:flex;align-items:center;gap:18px;padding:14px 18px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:900;color:#e5e7eb;letter-spacing:.2px}
+    .logo img{width:42px;height:42px}
+    .grow{flex:1}
+    .menu{display:flex;gap:34px;font-weight:800}
+    .menu a{color:#e5e7eb;opacity:.95}
+    .menu a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+    .cta{background:var(--brand);color:#1b1b1b;font-weight:900;padding:12px 18px;border-radius:14px;border:1px solid #00000014;box-shadow:var(--shadow);letter-spacing:.4px}
+    .cta:hover{transform:translateY(-1px)}
 
-    /* Каталог */
-    #catalog {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 16px;
+    /* HERO */
+    .heroWrap{background:var(--brand)}
+    .hero{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr;gap:18px;align-items:center;
+          padding:74px 18px 86px}
+    .heroInner{max-width:820px;margin:0 auto;text-align:center}
+    .hero .logoBig{width:min(520px,90vw);margin:0 auto 18px}
+    .hero h1{font-size:clamp(38px,8vw,88px);line-height:1.02;margin:6px 0 8px;font-weight:900;letter-spacing:.4px}
+    .hero .sub{color:#27303a;font-weight:700;font-size:clamp(16px,2.4vw,22px);margin:0 auto 24px;opacity:.95}
+    .btnXL{
+      display:inline-block;background:var(--brand);color:#1b1b1b;border:1px solid #00000018;
+      padding:16px 28px;border-radius:16px;box-shadow:var(--shadow);font-weight:900;
+      letter-spacing:.8px;text-transform:uppercase
     }
-    #catalog h2 {
-      margin-bottom: 16px;
-      font-size: 1.8rem;
-      text-align: center;
-    }
-    #search {
-      width: 100%;
-      padding: 10px 14px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
+    .btnXL:hover{transform:translateY(-1px)}
 
-    /* Grid */
-    #products.grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
+    /* Секции */
+    section{max-width:1180px;margin:34px auto;padding:0 18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#ffffff;border:1px solid var(--ring);border-radius:16px;padding:20px;box-shadow:var(--shadow)}
+    .card h3{margin:.2rem 0 .4rem;font-weight:800}
+    .muted{color:var(--ink-2);font-weight:600}
 
-    /* Карти */
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s;
+    /* Mobile */
+    .burger{display:none;color:#e5e7eb;cursor:pointer;padding:8px 10px;border-radius:10px}
+    .burger:hover{background:#ffffff10}
+    @media (max-width:900px){
+      .menu{display:none}
+      .burger{display:block;margin-left:auto}
     }
-    .card:hover { transform: translateY(-3px); }
-    .card img {
-      width: 100%; height: 180px; object-fit: cover;
-    }
-    .card .info {
-      padding: 14px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .card .price {
-      font-weight: bold;
-      color: #007b3e;
-      margin-top: auto;
-    }
-    .card .actions {
-      margin-top: 12px;
-      display: flex;
-      gap: 8px;
-    }
-    .card button {
-      flex: 1;
-      padding: 8px 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      transition: background 0.2s;
-    }
-    .card button.add { background: #f0f0f0; }
-    .card button.add:hover { background: #ddd; }
-    .card button.buy { background: #25D366; color: white; }
-    .card button.buy:hover { background: #1da851; }
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
 
-    /* Фиксиран бутон за количката */
-    body > button {
-      background: #25D366;
-      color: white;
-      font-weight: bold;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 50px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    body > button:hover { background: #1da851; }
+    footer{border-top:1px solid var(--ring);padding:26px 18px;color:var(--ink-2)}
+    .wrap{max-width:1180px;margin:auto;display:flex;gap:16px;justify-content:space-between;flex-wrap:wrap}
+
+    /* MODAL */
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:60}
+    .modal.open{display:flex}
+    .sheet{background:#fff;border-radius:18px;box-shadow:var(--shadow);width:min(620px,92vw);padding:18px;border:1px solid var(--ring)}
+    .sheet h2{margin:.2rem 0 .6rem;font-weight:900}
+    .row{display:flex;gap:10px}
+    .row input{flex:1;border:1px solid var(--ring);border-radius:12px;padding:12px 14px;font-size:16px}
+    .row a{display:inline-flex;align-items:center;justify-content:center;background:#25D366;color:#111;font-weight:800;padding:12px 16px;border-radius:12px;text-decoration:none}
   </style>
 </head>
 <body>
-  <!-- Навбар -->
-  <nav class="navbar">
-    <div class="logo">Авточасти Онлайн</div>
-    <div class="menu">
-      <a href="#catalog">Каталог</a>
-      <a href="tel:+359988823462">Телефон</a>
-    </div>
-  </nav>
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav">
+      <a class="logo" href="#home" aria-label="auto tanev">
+        <img src="assets/logo.png" alt="auto tanev лого">
+        <span>auto tanev</span>
+      </a>
+      <div class="grow"></div>
+      <div class="menu" id="menu">
+        <a href="#home">НАЧАЛО</a>
+        <a href="#about">ЗА НАС</a>
+        <a href="#products">ПРОДУКТИ</a>
+        <a href="#contacts">КОНТАКТИ</a>
+      </div>
+      <button class="cta" id="askBtn" type="button">Какво търсиш?</button>
+      <div class="burger" id="burger">☰</div>
+    </nav>
+  </header>
 
-  <!-- Каталог -->
-  <section id="catalog" class="container">
-    <h2>Каталог</h2>
-    <input id="search" placeholder="Търси по име, OEM, марка, модел…" />
-    <div id="products" class="grid"></div>
+  <!-- HERO -->
+  <main id="home" class="heroWrap">
+    <div class="hero">
+      <div class="heroInner">
+        <img class="logoBig" src="assets/logo.png" alt="auto tanev лого">
+        <h1>АВТОЧАСТИ</h1>
+        <p class="sub">Резервни части и консумативи за автомобили</p>
+        <button class="btnXL" id="askBtn2" type="button">Какво търсиш?</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Секции -->
+  <section id="products">
+    <h2>Популярни категории</h2>
+    <div class="grid">
+      <article class="card"><h3>Спирачна система</h3><p class="muted">Дискове, накладки, апарати</p></article>
+      <article class="card"><h3>Филтри</h3><p class="muted">Въздушни, маслени, горивни, купе</p></article>
+      <article class="card"><h3>Електрическа система</h3><p class="muted">Алтернатори, стартери, акумулатори</p></article>
+    </div>
   </section>
 
+  <section id="about">
+    <h2>За нас</h2>
+    <p class="muted">Auto Tanev е магазин за авточасти. Работим с доказани доставчици и бърза доставка. Ако не виждаш търсеното — изпрати запитване.</p>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакти</h2>
+    <div class="grid">
+      <div class="card"><h3>Телефон &amp; WhatsApp</h3><p class="muted"><a href="https://wa.me/359988823462">+359 988 823 462</a></p></div>
+      <div class="card"><h3>Имейл</h3><p class="muted"><a href="mailto:info@autotanev.bg">info@autotanev.bg</a></p></div>
+      <div class="card"><h3>Адрес</h3><p class="muted">България</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <small>© <span id="year"></span> auto tanev</small>
+      <small><a href="#home">Начало</a> · <a href="#contacts">Контакти</a></small>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="askModal">
+    <div class="sheet">
+      <h2>Какво търсиш?</h2>
+      <p class="muted">Въведи част / VIN / модел. Ще подготвим оферта и ще върнем съобщение в WhatsApp.</p>
+      <div class="row">
+        <input id="q" type="text" placeholder="напр. Филтър въздушен, VW Golf 7, 1.6 TDI, 2015" />
+        <a id="waLink" href="https://wa.me/359988823462" target="_blank">Изпрати</a>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const WHATSAPP_PHONE = "+359988823462"; // смени при нужда
-    const $ = (sel) => document.querySelector(sel);
-    const productsEl = $("#products");
-    const searchEl = $("#search");
-    let products = [];
-    let cart = {};
-
-    async function loadProducts() {
-      const res = await fetch("products.json");
-      products = await res.json();
-      render(products);
-    }
-
-    function card(p) {
-      return `
-      <article class="card" data-id="${p.id}">
-        <img src="${p.image}" alt="${p.name}" loading="lazy"/>
-        <div class="info">
-          <h3>${p.name}</h3>
-          <p><b>OEM:</b> ${p.oem}</p>
-          <p><b>Марка:</b> ${p.brand}</p>
-          <p><b>Съвместимост:</b> ${p.fits.join(", ")}</p>
-          <p class="price">${p.price.toFixed(2)} лв</p>
-          <div class="actions">
-            <button class="add">Добави</button>
-            <button class="buy">Поръчай по WhatsApp</button>
-          </div>
-        </div>
-      </article>`;
-    }
-
-    function render(list) {
-      productsEl.innerHTML = list.map(card).join("");
-      productsEl.querySelectorAll(".add").forEach(btn => {
-        btn.onclick = (e) => {
-          const id = e.target.closest("article").dataset.id;
-          cart[id] = (cart[id] || 0) + 1;
-          e.target.textContent = "Добавено ✓";
-          setTimeout(() => (e.target.textContent = "Добави"), 800);
-        };
-      });
-      productsEl.querySelectorAll(".buy").forEach(btn => {
-        btn.onclick = (e) => {
-          const id = e.target.closest("article").dataset.id;
-          const p = products.find(x => x.id === id);
-          const txt = `Поръчка:
-- ${p.name} (${p.oem}) — 1 бр x ${p.price.toFixed(2)} лв
-Обща сума: ${(p.price).toFixed(2)} лв
-
-Име:
-Телефон:
-Адрес:
-Бележки:`;
-          const url = `https://wa.me/${WHATSAPP_PHONE.replace(/\D/g,"")}?text=${encodeURIComponent(txt)}`;
-          window.open(url, "_blank");
-        };
-      });
-    }
-
-    searchEl?.addEventListener("input", () => {
-      const q = searchEl.value.trim().toLowerCase();
-      const list = products.filter(p =>
-        [p.name, p.oem, p.brand, ...(p.fits||[])].join(" ").toLowerCase().includes(q)
-      );
-      render(list);
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+    burger.addEventListener('click', () => {
+      const open = menu.style.display === 'flex';
+      menu.style.display = open ? 'none' : 'flex';
+      if(!open){ menu.style.flexDirection = 'column'; menu.style.gap = '10px'; }
     });
-
-    // бутон за количка
-    const cartBtn = document.createElement("button");
-    cartBtn.textContent = "Поръчай количка по WhatsApp";
-    cartBtn.style.position = "fixed";
-    cartBtn.style.right = "16px";
-    cartBtn.style.bottom = "16px";
-    cartBtn.onclick = () => {
-      if (!Object.keys(cart).length) return alert("Количката е празна.");
-      let lines = ["Поръчка (количка):"];
-      let total = 0;
-      for (const [id, qty] of Object.entries(cart)) {
-        const p = products.find(x => x.id === id);
-        const sum = p.price * qty;
-        total += sum;
-        lines.push(`- ${p.name} (${p.oem}) — ${qty} бр x ${p.price.toFixed(2)} лв = ${sum.toFixed(2)} лв`);
-      }
-      lines.push(`Обща сума: ${total.toFixed(2)} лв`, "", "Име:", "Телефон:", "Адрес:", "Бележки:");
-      const url = `https://wa.me/${WHATSAPP_PHONE.replace(/\D/g,"")}?text=${encodeURIComponent(lines.join("\n"))}`;
-      window.open(url, "_blank");
-    };
-    document.body.appendChild(cartBtn);
-
-    loadProducts();
-
-    // navbar сянка при скрол
-    const nav = document.querySelector('.navbar');
-    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 4);
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    const modal = document.getElementById('askModal');
+    [document.getElementById('askBtn'), document.getElementById('askBtn2')].forEach(btn =>
+      btn.addEventListener('click', ()=> modal.classList.add('open'))
+    );
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open'); });
+    const q=document.getElementById('q'); const waLink=document.getElementById('waLink');
+    const build=()=>{const text=q.value.trim()?`Търся: ${q.value.trim()}`:'Търся авточаст.';waLink.href=`https://wa.me/359988823462?text=${encodeURIComponent(text)}`};
+    q.addEventListener('input',build); q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();waLink.click();}});
   </script>
 </body>
 </html>
