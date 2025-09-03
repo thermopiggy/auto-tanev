@@ -104,6 +104,22 @@
 }
 .callBtn:hover{background:#222222}
 
+/* илюстрацията под текста в секция За нас */
+.about-img{
+  display:block;
+  margin:18px auto 0;
+  width:min(520px, 88vw);   /* таван на десктоп + адаптивно на мобилен */
+  height:auto;
+  object-fit:contain;
+}
+
+/* доп. контрол специално за малки екрани */
+@media (max-width:600px){
+  .about-img{
+    width:84vw;             /* по-малка на мобилен */
+    margin-top:14px;
+  }
+}
 
 </style>
 </head>
@@ -141,7 +157,9 @@
   <section id="about">
     <h2>За нас</h2>
     <p class="muted">Auto Tanev е магазин за авточасти. Предлагаме качествени части за всички марки автомобили. Можете да направите запитване по телефона.</p>
-  <img src="assets/parts.png" alt="Авточасти Auto Tanev" style="max-width:420px;margin-top:18px;display:block;">
+<img src="assets/parts.png" alt="Авточасти Auto Tanev"
+     class="about-img" loading="lazy">
+
   </section>
 
   <section id="contacts">
