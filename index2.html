@@ -81,14 +81,72 @@
     .row{display:flex;gap:10px}
     .row input{flex:1;border:1px solid var(--ring);border-radius:12px;padding:12px 14px;font-size:16px}
     .row a{display:inline-flex;align-items:center;justify-content:center;background:#25D366;color:#111;font-weight:800;padding:12px 16px;border-radius:12px;text-decoration:none}
+
+    .callBtn{
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      background:#000000;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+      z-index:70;
+    }
+    .callBtn svg{
+      width:28px;
+      height:28px;
+      fill:#ffffff;
+    }
+    .callBtn:hover{background:#222222}
+
+    /* илюстрацията под текста в секция За нас */
+    .about-img{
+      display:block;
+      margin:18px auto 0;
+      width:min(520px, 88vw);   /* таван на десктоп + адаптивно на мобилен */
+      height:auto;
+      object-fit:contain;
+    }
+
+    /* доп. контрол специално за малки екрани */
+    @media (max-width:600px){
+      .about-img{
+        width:84vw;             /* по-малка на мобилен */
+        margin-top:14px;
+      }
+    }
+
+    /* категории в модала */
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .catBtn {
+      padding: 14px;
+      font-weight: 700;
+      border: 1px solid var(--ring);
+      border-radius: 12px;
+      background: #f9f9f9;
+      cursor: pointer;
+      text-align: left;
+    }
+    .catBtn:hover {
+      background: var(--brand);
+      color: #111;
+    }
   </style>
 </head>
 <body>
   <!-- HEADER -->
   <header class="header">
     <nav class="nav">
-      
-           <div class="grow"></div>
+      <div class="grow"></div>
       <div class="menu" id="menu">
         <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&amp;g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">МАГАЗИН</a>
         <a href="#about">ЗА НАС</a>
@@ -111,31 +169,23 @@
     </div>
   </main>
 
-  <!-- Секции -->
-  
-
   <section id="about">
     <h2>За нас</h2>
     <p class="muted">Auto Tanev е магазин за авточасти. Предлагаме качествени части за всички марки автомобили. Можете да направите запитване по телефона.</p>
+    <img src="assets/parts.png" alt="Авточасти Auto Tanev" class="about-img" loading="lazy">
   </section>
 
   <section id="contacts">
     <h2>Контакти</h2>
     <div class="grid">
-      <div class="card"><h3>Телефон &amp; WhatsApp</h3><p class="muted"><a href="https://wa.me/359988823462">+359 988 823 462</a></p></div>
-      <div class="card"><h3>Имейл</h3><p class="muted"><a href="mailto:info@autotanev.bg">info@autotanev.bg</a></p></div>
-      <div class="card"><h3>Адрес</h3><p class="muted">'Кирил и Методий' 16, Перник</p></div>
+      <div class="card"><h3>Перник-Изток</h3><p class="muted"><a href="https://www.google.com/maps/@42.6031969,23.1136983,3a,75y,319.9h,82t/data=!3m7!1e1!3m5!1sO0y8Kq6rsFhL-YTRk7kghg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D8.000878899667796%26panoid%3DO0y8Kq6rsFhL-YTRk7kghg%26yaw%3D319.89613317856987!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDkwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Благой Гебрев 43А</a></p></div>
+      <div class="card"><h3>Перник</h3><p class="muted"><a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&amp;g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Кирил и Методий 16</a></p></div>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
       <small>© <span id="year"></span> auto tanev</small>
-      <small><a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D" 
-   target="_blank" rel="noopener">
-   МАГАЗИН
-</a>
- · <a href="#contacts">Контакти</a></small>
     </div>
   </footer>
 
@@ -143,7 +193,13 @@
   <div class="modal" id="askModal">
     <div class="sheet">
       <h2>Какво търсиш?</h2>
-      <p class="muted">Въведи част / VIN / модел. Ще подготвим оферта и ще върнем съобщение в WhatsApp.</p>
+      <div class="categories">
+        <button class="catBtn" data-text="Гуми">Гуми</button>
+        <button class="catBtn" data-text="Джанти">Джанти</button>
+        <button class="catBtn" data-text="Филтри">Филтри</button>
+        <button class="catBtn" data-text="Спирачна система">Спирачна система</button>
+        <button class="catBtn" data-text="Двигателно масло">Двигателно масло</button>
+      </div>
       <div class="row">
         <input id="q" type="text" placeholder="напр. Филтър въздушен, VW Golf 7, 1.6 TDI, 2015" />
         <a id="waLink" href="https://wa.me/359988823462" target="_blank">Изпрати</a>
@@ -168,6 +224,20 @@
     const q=document.getElementById('q'); const waLink=document.getElementById('waLink');
     const build=()=>{const text=q.value.trim()?`Търся: ${q.value.trim()}`:'Търся авточаст.';waLink.href=`https://wa.me/359988823462?text=${encodeURIComponent(text)}`};
     q.addEventListener('input',build); q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();waLink.click();}});
+    document.querySelectorAll('.catBtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        q.value = btn.dataset.text;
+        build();
+      });
+    });
   </script>
+
+  <a href="tel:+359888316052" class="callBtn" aria-label="Обади се">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57.55 0 1 .45 1 1V20c0 
+      .55-.45 1-1 1C10.07 21 3 13.93 3 5c0-.55.45-1 1-1h3.5c.55 0 1 
+      .45 1 1 0 1.25.2 2.46.57 3.59.11.34.03.72-.24 1l-2.21 2.2z"/>
+    </svg>
+  </a>
 </body>
 </html>
