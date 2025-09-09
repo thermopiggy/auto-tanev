@@ -233,7 +233,8 @@
       </div>
       <div class="row">
         <input id="q" type="text" placeholder="например гуми за VW Golf 7, 1.6 TDI, 2015" />
-        <a id="waLink" href="https://wa.me/359988823462" target="_blank">Изпрати</a>
+       <a id="viberLink" href="viber://chat?number=%2B359988823462" target="_blank">Изпрати</a>
+
       </div>
     </div>
   </div>
@@ -253,8 +254,15 @@
     );
     modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open'); });
     const q=document.getElementById('q'); const waLink=document.getElementById('waLink');
-    const build=()=>{const text=q.value.trim()?`Търся: ${q.value.trim()}`:'Търся авточаст.';waLink.href=`https://wa.me/359988823462?text=${encodeURIComponent(text)}`};
-    q.addEventListener('input',build); q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();waLink.click();}});
+   const q=document.getElementById('q'); 
+const viberLink=document.getElementById('viberLink');
+const build=()=>{
+  const text=q.value.trim()?`Търся: ${q.value.trim()}`:'Търся авточаст.';
+  viberLink.href=`viber://chat?number=%2B359988823462&text=${encodeURIComponent(text)}`;
+};
+q.addEventListener('input',build); 
+q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();viberLink.click();}});
+
     document.querySelectorAll('.catBtn').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         q.value = btn.dataset.text;
