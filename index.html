@@ -265,6 +265,10 @@
       btn.addEventListener('click', ()=> modal.classList.add('open'))
     );
     modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open'); });
+    document.getElementById('closeModal').addEventListener('click', () => {
+  modal.classList.remove('open');
+});
+
     const q=document.getElementById('q'); 
 const viberLink=document.getElementById('viberLink');
 const build=()=>{
