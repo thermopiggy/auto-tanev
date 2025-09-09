@@ -149,6 +149,17 @@
   display: block;
   margin-bottom: 32px;
 }
+@media (max-width:900px){
+  .menu {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;   /* ляво подравняване */
+    gap:20px;                 /* повече разстояние между бутоните */
+  }
+  .menu a {
+    padding:10px 0;           /* по-голяма зона за цъкане */
+  }
+}
 
   </style>
 </head>
