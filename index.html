@@ -66,12 +66,7 @@
     .muted{color:var(--ink-2);font-weight:600}
 
     /* Mobile */
-    .burger{display:none;color:#e5e7eb;cursor:pointer;padding:8px 10px;border-radius:10px}
-    .burger:hover{background:#ffffff10}
-    @media (max-width:900px){
-      .menu{display:none}
-      .burger{display:block;margin-left:auto}
-    }
+   
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
 
     footer{border-top:1px solid var(--ring);padding:26px 18px;color:var(--ink-2)}
@@ -165,17 +160,6 @@
   }
 }
 
-  
-/* Mobile-only nav spacing & hamburger */
-@media (max-width:900px){
-  .menu{
-    display:none;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:20px;
-  }
-  .menu a{ padding:10px 0; }
-}
     .card a {
   display: inline-block;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -274,7 +258,7 @@
         <a href="#contacts">КОНТАКТИ</a>
       </div>
       <button class="cta" id="askBtn" type="button">Части</button>
-      <div class="burger" id="burger">☰</div>
+     
     </nav>
   </header>
 
