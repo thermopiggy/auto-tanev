@@ -191,6 +191,17 @@
   position: relative; /* текстът стои над overlay */
   z-index: 1;
 }
+@media (max-width:900px){
+  .menu {
+    display:flex !important;
+    flex-direction:row !important;
+    gap:18px !important;
+    justify-content:flex-end; /* или center, ако искаш центрирани */
+  }
+  .menu a {
+    padding:8px 6px !important;
+  }
+}
 
 </style>
   <script type="application/ld+json">
