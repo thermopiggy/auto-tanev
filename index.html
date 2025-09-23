@@ -202,6 +202,15 @@
     padding:8px 6px !important;
   }
 }
+/* показвай целта под фиксирания navbar */
+html { scroll-behavior: smooth; }
+
+:root { --nav-h: 88px; }           /* височина на navbar (направи я точната, ако е друга) */
+section[id] { scroll-margin-top: var(--nav-h); }
+
+@media (max-width: 480px){
+  :root { --nav-h: 104px; }        /* малко по-голям офсет за мобилно, ако менюто е по-високо */
+}
 
 </style>
   <script type="application/ld+json">
