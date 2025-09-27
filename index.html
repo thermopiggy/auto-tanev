@@ -211,6 +211,19 @@ section[id] { scroll-margin-top: var(--nav-h); }
 @media (max-width: 480px){
   :root { --nav-h: 104px; }        /* малко по-голям офсет за мобилно, ако менюто е по-високо */
 }
+.about-img {
+  opacity: 0;
+  transform: translateY(80px);   /* започва отдолу */
+  transition: all 0.8s ease-out;
+}
+
+.about-img.show {
+  opacity: 1;
+  transform: translateY(0);      /* достига нормалната си позиция */
+}
+.about-img:nth-of-type(2) {
+  transition-delay: 0.3s; /* втората ще закъснее с 0.3 секунди */
+}
 
 </style>
   <script type="application/ld+json">
@@ -393,6 +406,21 @@ q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();viberLink.click()
   <img src="ViberLogo.png" alt="Viber" style="width:28px; height:28px;">
 </a>
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll(".about-img");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // за да не се стартира пак
+      }
+    });
+  }, { threshold: 0.2 });
+
+  imgs.forEach(img => observer.observe(img));
+});
+</script>
 
 </body>
 </html>
