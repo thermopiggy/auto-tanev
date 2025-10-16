@@ -224,6 +224,16 @@ section[id] { scroll-margin-top: var(--nav-h); }
 .about-img:nth-of-type(2) {
   transition-delay: 0.3s; /* втората ще закъснее с 0.3 секунди */
 }
+/* БЛАГОТВОРИТЕЛНИ ДЕЙНОСТИ */
+.charity{max-width:1180px;margin:34px auto;padding:0 18px}
+.charity h2{font-weight:900;margin:0 0 10px}
+.charity h3{font-weight:800;margin:22px 0 10px}
+.charity h4{font-weight:800;margin:14px 0 10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid3 a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--ring);box-shadow:var(--shadow)}
+.grid3 img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .2s;border-radius:14px}
+.grid3 a:hover img{transform:scale(1.02)}
+@media (max-width:480px){ .grid3 img{aspect-ratio:1/1} }
 
 </style>
   <script type="application/ld+json">
@@ -277,19 +287,6 @@ section[id] { scroll-margin-top: var(--nav-h); }
     }
   ]
 }
-    /* БЛАГОТВОРИТЕЛНИ ДЕЙНОСТИ */
-.charity{max-width:1180px;margin:34px auto;padding:0 18px}
-.charity h2{font-weight:900;margin:0 0 10px}
-.charity h3{font-weight:800;margin:22px 0 10px}
-.charity h4{font-weight:800;margin:14px 0 10px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.grid3 a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--ring);box-shadow:var(--shadow)}
-.grid3 img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .2s}
-.grid3 a:hover img{transform:scale(1.02)}
-/* 3 колони и на мобилно, по изискване */
-@media (max-width:480px){
-  .grid3 img{aspect-ratio:1/1}
-}
 
 /* Лайтбокс за снимките */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:90;padding:14px}
@@ -307,8 +304,7 @@ section[id] { scroll-margin-top: var(--nav-h); }
     <nav class="nav">
       <div class="grow"></div>
       <div class="menu" id="menu">
-        <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" title="Локация">
-  📍/a>
+        <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"  title="Локация">📍</a>
         <a href="#about">за нас</a>
         <a href="#contacts">контакти</a>
         <a href="#charity" class="nav-link">благотворителност</a>
