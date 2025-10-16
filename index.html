@@ -243,6 +243,43 @@ section[id] { scroll-margin-top: var(--nav-h); }
 .lb img{max-width:min(1200px,94vw);max-height:90vh;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
 .lb-close{position:absolute;top:14px;right:16px;font-size:32px;line-height:1;color:#fff;border:0;background:transparent;cursor:pointer}
 
+    /* Хамбургер меню (показва се само на мобилно) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  gap: 5px;
+  margin-right: 10px;
+}
+.nav-toggle span {
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+@media (max-width:768px){
+  .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:56px; right:0; width:200px; padding:10px; }
+  .nav-links.open { display:flex; }
+  .nav-toggle { display:flex; }
+  /* Пинът остава винаги видим вляво */
+  .nav-pin {
+    position:fixed;
+    top:10px;
+    left:10px;
+    z-index:9999;
+    font-size:20px;
+  }
+}
+
 </style>
   <script type="application/ld+json">
 {
@@ -308,13 +345,18 @@ section[id] { scroll-margin-top: var(--nav-h); }
       <div class="grow"></div>
       <div class="menu" id="menu">
         <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"  title="Локация">📍</a>
-        <a href="#about">за нас</a>
-        <a href="#contacts">контакти</a>
-        <a href="#charity" class="nav-link">благотворителност</a>
-      </div>
-      <button class="cta" id="askBtn" type="button">Части</button>
-     
-    </nav>
+         <!-- Хамбургер бутон -->
+  <div class="nav-toggle" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+
+  <!-- Навигационни линкове -->
+  <div class="nav-links" id="navLinks">
+    <a href="#about" class="nav-link">За нас</a>
+    <a href="#contacts" class="nav-link">Контакти</a>
+    <a href="#charity" class="nav-link">Благотворителност</a>
+  </div>
+</nav>
   </header>
 
   <!-- HERO -->
@@ -567,5 +609,16 @@ document.addEventListener("DOMContentLoaded", () => {
   <img id="lbImg" src="" alt="">
 </div>
 
+  <script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', ()=>{
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('active');
+  });
+</script>
+
+  
 </body>
 </html>
