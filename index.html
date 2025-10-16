@@ -529,12 +529,13 @@ if (burger && menu) {
     if(!open){ menu.style.flexDirection = 'column'; menu.style.gap = '10px'; }
   });
 }
+ const modal = document.getElementById('askModal');
+  const closeModalBtn = document.getElementById('closeModal');
 
+  if (modal && closeModalBtn) {
     modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open'); });
-    document.getElementById('closeModal').addEventListener('click', () => {
-  modal.classList.remove('open');
-});
-
+    closeModalBtn.addEventListener('click', ()=> modal.classList.remove('open'));
+    
     const q=document.getElementById('q'); 
 const viberLink=document.getElementById('viberLink');
 const build=()=>{
