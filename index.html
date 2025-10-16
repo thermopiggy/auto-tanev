@@ -578,64 +578,35 @@ q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();viberLink.click()
   <img src="ViberLogo.png" alt="Viber" style="width:28px; height:28px;">
 </a>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const imgs = document.querySelectorAll(".about-img");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target); // за да не се стартира пак
-      }
-    });
-  }, { threshold: 0.2 });
 
-  imgs.forEach(img => observer.observe(img));
-});
-</script<script>
-document.addEventListener('DOMContentLoaded', () => {
+<script>
+document.addEventListener('click', e => {
+  const a = e.target.closest('.charity .grid3 a');
+  if (!a) return;
+  e.preventDefault();
   const lb = document.getElementById('lb');
   const lbImg = document.getElementById('lbImg');
-  const closeBtn = lb.querySelector('.lb-close');
-  const thumbs = Array.from(document.querySelectorAll('.charity .grid3 a'));
-  let current = -1;
+  lbImg.src = a.getAttribute('data-full') || a.getAttribute('href');
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
 
-  function openLB(i){
-    current = i;
-    lbImg.src = thumbs[i].getAttribute('data-full') || thumbs[i].getAttribute('href');
-    lb.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLB(){
+document.addEventListener('click', e => {
+  const lb = document.getElementById('lb');
+  if (e.target.classList.contains('lb-close') || e.target === lb) {
     lb.classList.remove('open');
-    lbImg.src = '';
     document.body.style.overflow = '';
   }
-  function showNext(step){
-    if(current === -1) return;
-    current = (current + step + thumbs.length) % thumbs.length;
-    lbImg.src = thumbs[current].getAttribute('data-full') || thumbs[current].getAttribute('href');
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const lb = document.getElementById('lb');
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
   }
-
-  // Отваряне
-  thumbs.forEach((a,i)=>{
-    a.addEventListener('click', e=>{
-      e.preventDefault();
-      openLB(i);
-    });
-  });
-
-  // Затваряне
-  closeBtn.addEventListener('click', closeLB);
-  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
-  document.addEventListener('keydown', e=>{
-    if(e.key==='Escape') closeLB();
-    if(e.key==='ArrowRight') showNext(1);
-    if(e.key==='ArrowLeft') showNext(-1);
-  });
-  
+});
 </script>
-
 
 <div id="lb" class="lb" aria-modal="true" role="dialog">
   <button class="lb-close" aria-label="Затвори">&times;</button>
