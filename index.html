@@ -623,6 +623,21 @@ document.addEventListener('keydown', e => {
   });
 </script>
 
-  
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const imgs = document.querySelectorAll('.about-img');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add('show');
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  imgs.forEach(img => io.observe(img));
+});
+</script>
+
 </body>
 </html>
