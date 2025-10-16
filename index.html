@@ -581,8 +581,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <script>
-(function(){
+document.addEventListener('DOMContentLoaded', () => {
   const lb = document.getElementById('lb');
+  if (!lb) return; // защитa, ако блокът липсва
+
   const lbImg = document.getElementById('lbImg');
   const closeBtn = lb.querySelector('.lb-close');
 
@@ -599,24 +601,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = '';
   }
 
-  // ✅ Спираме навигацията и отваряме лайтбокса
+  // Спираме навигацията и отваряме лайтбокса
   document.addEventListener('click', (e)=>{
     const a = e.target.closest('.charity .grid3 a');
     if(!a) return;
     const src = a.getAttribute('data-full') || a.getAttribute('href');
     if(!src) return;
-    e.preventDefault();            // спира „връщането към хоме“
+    e.preventDefault();
     e.stopPropagation();
     openLB(src);
-    return false;
   });
 
   // Затваряне
   lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
-  closeBtn.addEventListener('click', closeLB);
+  if (closeBtn) closeBtn.addEventListener('click', closeLB);
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
-})();
+});
 </script>
+
 
 <div id="lb" class="lb" aria-modal="true" role="dialog">
   <button class="lb-close" aria-label="Затвори">&times;</button>
