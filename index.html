@@ -592,43 +592,64 @@ document.addEventListener("DOMContentLoaded", () => {
 
   imgs.forEach(img => observer.observe(img));
 });
-</script>
-<script>
+</script<script>
 document.addEventListener('DOMContentLoaded', () => {
   const lb = document.getElementById('lb');
-  if (!lb) return; // защитa, ако блокът липсва
-
   const lbImg = document.getElementById('lbImg');
   const closeBtn = lb.querySelector('.lb-close');
+  const thumbs = Array.from(document.querySelectorAll('.charity .grid3 a'));
+  let current = -1;
 
-  function openLB(src){
-    lbImg.src = src;
+  function openLB(i){
+    current = i;
+    lbImg.src = thumbs[i].getAttribute('data-full') || thumbs[i].getAttribute('href');
     lb.classList.add('open');
-    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
   }
   function closeLB(){
     lb.classList.remove('open');
     lbImg.src = '';
-    document.documentElement.style.overflow = '';
     document.body.style.overflow = '';
   }
+  function showNext(step){
+    if(current === -1) return;
+    current = (current + step + thumbs.length) % thumbs.length;
+    lbImg.src = thumbs[current].getAttribute('data-full') || thumbs[current].getAttribute('href');
+  }
 
-  // Спираме навигацията и отваряме лайтбокса
-  document.addEventListener('click', (e)=>{
-    const a = e.target.closest('.charity .grid3 a');
-    if(!a) return;
-    const src = a.getAttribute('data-full') || a.getAttribute('href');
-    if(!src) return;
-    e.preventDefault();
-    e.stopPropagation();
-    openLB(src);
+  // Отваряне
+  thumbs.forEach((a,i)=>{
+    a.addEventListener('click', e=>{
+      e.preventDefault();
+      openLB(i);
+    });
   });
 
   // Затваряне
-  lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
-  if (closeBtn) closeBtn.addEventListener('click', closeLB);
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
+  closeBtn.addEventListener('click', closeLB);
+  lb.addEventListener('click', e=>{ if(e.target===lb) closeLB(); });
+  document.addEventListener('keydown', e=>{
+    if(e.key==='Escape') closeLB();
+    if(e.key==='ArrowRight') showNext(1);
+    if(e.key==='ArrowLeft') showNext(-1);
+  });
+
+  // Скрол (десктоп)
+  lb.addEventListener('wheel', e=>{
+    if(Math.abs(e.deltaY)>20){
+      showNext(e.deltaY>0 ? 1 : -1);
+    }
+  });
+
+  // Суайп (мобилно)
+  let touchStartX = 0;
+  lb.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; });
+  lb.addEventListener('touchend', e=>{
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 50){
+      showNext(dx < 0 ? 1 : -1);
+    }
+  });
 });
 </script>
 
