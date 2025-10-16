@@ -633,24 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(e.key==='ArrowRight') showNext(1);
     if(e.key==='ArrowLeft') showNext(-1);
   });
-
-  // Скрол (десктоп)
-  lb.addEventListener('wheel', e=>{
-    if(Math.abs(e.deltaY)>20){
-      showNext(e.deltaY>0 ? 1 : -1);
-    }
-  });
-
-  // Суайп (мобилно)
-  let touchStartX = 0;
-  lb.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; });
-  lb.addEventListener('touchend', e=>{
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if(Math.abs(dx) > 50){
-      showNext(dx < 0 ? 1 : -1);
-    }
-  });
-});
+  
 </script>
 
 
