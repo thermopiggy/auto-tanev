@@ -235,6 +235,14 @@ section[id] { scroll-margin-top: var(--nav-h); }
 .grid3 a:hover img{transform:scale(1.02)}
 @media (max-width:480px){ .grid3 img{aspect-ratio:1/1} }
 
+
+    /* Lightbox */
+.lb{position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.9);z-index:9999;padding:14px}
+.lb.open{display:flex}
+.lb img{max-width:min(1200px,94vw);max-height:90vh;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+.lb-close{position:absolute;top:14px;right:16px;font-size:32px;line-height:1;color:#fff;border:0;background:transparent;cursor:pointer}
+
 </style>
   <script type="application/ld+json">
 {
@@ -288,11 +296,6 @@ section[id] { scroll-margin-top: var(--nav-h); }
   ]
 }
 
-/* Лайтбокс за снимките */
-.lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:90;padding:14px}
-.lb.open{display:flex}
-.lb img{max-width:min(1200px,94vw);max-height:90vh;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-.lb-close{position:absolute;top:14px;right:16px;font-size:32px;line-height:1;color:#fff;border:0;background:transparent;cursor:pointer}
 
     
 </script>
@@ -526,28 +529,43 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 <script>
-  // Лайтбокс логика
-  (function(){
-    const lb = document.getElementById('lb');
-    const lbImg = document.getElementById('lbImg');
-    const closeBtn = lb.querySelector('.lb-close');
+(function(){
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const closeBtn = lb.querySelector('.lb-close');
 
-    document.addEventListener('click', (e)=>{
-      const a = e.target.closest('a[data-full]');
-      if(a){
-        e.preventDefault();
-        const src = a.getAttribute('data-full');
-        lbImg.src = src;
-        lb.classList.add('open');
-      }
-    });
+  function openLB(src){
+    lbImg.src = src;
+    lb.classList.add('open');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB(){
+    lb.classList.remove('open');
+    lbImg.src = '';
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
 
-    const close = ()=>{ lb.classList.remove('open'); lbImg.src=''; };
-    lb.addEventListener('click', (e)=>{ if(e.target===lb) close(); });
-    closeBtn.addEventListener('click', close);
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
-  })();
+  // Клик по миниатюра
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a[data-full]');
+    if(!a) return;
+    e.preventDefault();
+    openLB(a.getAttribute('data-full'));
+  });
+
+  // Затваряне
+  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+  closeBtn.addEventListener('click', closeLB);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
+})();
 </script>
+
+<div id="lb" class="lb" aria-modal="true" role="dialog">
+  <button class="lb-close" aria-label="Затвори">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
 
 </body>
 </html>
