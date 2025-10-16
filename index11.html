@@ -40,7 +40,11 @@
     .cta:hover{transform:translateY(-1px)}
 
     /* HERO */
-    .heroWrap{background:var(--brand)}
+    .heroWrap {
+  background: url("assets/magazin.png") no-repeat center center;
+  background-size: cover;
+}
+
     .hero{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr;gap:18px;align-items:center;
           padding:74px 18px 86px}
     .heroInner{max-width:820px;margin:0 auto;text-align:center}
@@ -62,12 +66,7 @@
     .muted{color:var(--ink-2);font-weight:600}
 
     /* Mobile */
-    .burger{display:none;color:#e5e7eb;cursor:pointer;padding:8px 10px;border-radius:10px}
-    .burger:hover{background:#ffffff10}
-    @media (max-width:900px){
-      .menu{display:none}
-      .burger{display:block;margin-left:auto}
-    }
+   
     @media (max-width:900px){.grid{grid-template-columns:1fr}}
 
     footer{border-top:1px solid var(--ring);padding:26px 18px;color:var(--ink-2)}
@@ -161,31 +160,138 @@
   }
 }
 
-  
-/* Mobile-only nav spacing & hamburger */
-@media (max-width:900px){
-  .menu{
-    display:none;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:20px;
-  }
-  .menu a{ padding:10px 0; }
+    .card a {
+  display: inline-block;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+.card a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+#askBtn,
+#askBtn2 {
+  display: none !important;
+}
+.heroWrap {
+  position: relative;
+  background: url("assets/bg-building.png") no-repeat center center;
+  background-size: cover;
+}
+
+.heroWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0.15), rgba(0,0,0,0));
+}
+
+.hero {
+  position: relative; /* текстът стои над overlay */
+  z-index: 1;
+}
+@media (max-width:900px){
+  .menu {
+    display:flex !important;
+    flex-direction:row !important;
+    gap:18px !important;
+    justify-content:flex-end; /* или center, ако искаш центрирани */
+  }
+  .menu a {
+    padding:8px 6px !important;
+  }
+}
+/* показвай целта под фиксирания navbar */
+html { scroll-behavior: smooth; }
+
+:root { --nav-h: 88px; }           /* височина на navbar (направи я точната, ако е друга) */
+section[id] { scroll-margin-top: var(--nav-h); }
+
+@media (max-width: 480px){
+  :root { --nav-h: 104px; }        /* малко по-голям офсет за мобилно, ако менюто е по-високо */
+}
+.about-img {
+  opacity: 0;
+  transform: translateY(80px);   /* започва отдолу */
+  transition: all 0.8s ease-out;
+}
+
+.about-img.show {
+  opacity: 1;
+  transform: translateY(0);      /* достига нормалната си позиция */
+}
+.about-img:nth-of-type(2) {
+  transition-delay: 0.3s; /* втората ще закъснее с 0.3 секунди */
+}
+
 </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://thermopiggy.github.io/auto-tanev/#org",
+      "name": "Auto Tanev",
+      "url": "https://thermopiggy.github.io/auto-tanev/",
+      "logo": "https://thermopiggy.github.io/auto-tanev/assets/logo.png",
+      "image": [
+        "https://thermopiggy.github.io/auto-tanev/assets/parts.png",
+        "https://thermopiggy.github.io/auto-tanev/assets/parts2.png"
+      ]
+    },
+    {
+      "@type": "AutoPartsStore",
+      "@id": "https://thermopiggy.github.io/auto-tanev/#pernik-km16",
+      "name": "Auto Tanev — Перник (Кирил и Методий 16)",
+      "url": "https://thermopiggy.github.io/auto-tanev/",
+      "parentOrganization": { "@id": "https://thermopiggy.github.io/auto-tanev/#org" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Кирил и Методий 16",
+        "addressLocality": "Перник",
+        "addressCountry": "BG"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 42.6104479, "longitude": 23.0408213 },
+      "telephone": ["+359888316052", "+35976602724"],
+      "hasMap": "https://www.google.com/maps/@42.6104479,23.0408213,3a,75y,133.34h,109.71t",
+      "priceRange": "$$"
+    },
+    {
+      "@type": "AutoPartsStore",
+      "@id": "https://thermopiggy.github.io/auto-tanev/#pernik-iztok-bg43a",
+      "name": "Auto Tanev — Перник-Изток (Благой Гебрев 43А)",
+      "url": "https://thermopiggy.github.io/auto-tanev/",
+      "parentOrganization": { "@id": "https://thermopiggy.github.io/auto-tanev/#org" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Благой Гебрев 43А",
+        "addressLocality": "Перник-Изток",
+        "addressCountry": "BG"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 42.6031969, "longitude": 23.1136983 },
+      "telephone": ["+359877529699"],
+      "hasMap": "https://www.google.com/maps/@42.6031969,23.1136983,3a,75y,319.9h,82t",
+      "priceRange": "$$"
+    }
+  ]
+}
+</script>
+
 </head>
-<body>
+<body
   <!-- HEADER -->
   <header class="header">
     <nav class="nav">
       <div class="grow"></div>
       <div class="menu" id="menu">
-        <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp" target="_blank" rel="noopener">АДРЕС</a>
+        <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">АДРЕС</a>
         <a href="#about">ЗА НАС</a>
         <a href="#contacts">КОНТАКТИ</a>
       </div>
       <button class="cta" id="askBtn" type="button">Части</button>
-      <div class="burger" id="burger">☰</div>
+     
     </nav>
   </header>
 
@@ -203,8 +309,13 @@
 
   <section id="about">
     <h2>За нас</h2>
-    <p class="muted">Auto Tanev е магазин за авточасти. Предлагаме качествени части за всички марки автомобили. Можете да направите запитване по телефона или по viber.</p>
+    <p class="muted"><p>Auto Tanev е специализиран магазин за авточасти с фокус върху <strong>спирачни тръбички — продажба, доставка и изработка по размер.</strong> Освен това предлагаме богат избор от части и консумативи за всички марки автомобили.</p>
+Можете да направите запитване по телефона или по viber.</p>
+    <img src="assets/parts0.png" alt="Медни спирачни тръбички" class="about-img" loading="lazy">
     <img src="assets/parts.png" alt="Авточасти Auto Tanev" class="about-img" loading="lazy">
+    <img src="assets/parts2.png" alt="Още авточасти" class="about-img about-img-big" loading="lazy">
+
+
   </section>
 
   <section id="contacts">
@@ -215,15 +326,15 @@
   </h3><p class="muted"><a href="https://www.google.com/maps/@42.6031969,23.1136983,3a,75y,319.9h,82t/data=!3m7!1e1!3m5!1sO0y8Kq6rsFhL-YTRk7kghg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D8.000878899667796%26panoid%3DO0y8Kq6rsFhL-YTRk7kghg%26yaw%3D319.89613317856987!7i16384!8i8192" target="_blank" rel="noopener">Благой Гебрев 43А</a></p><p><a href="tel:+359877529699" class="cta">0877 529699</a></p>
 </div>
       <div class="card">  <h3>
-    <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp" target="_blank" rel="noopener">Перник</a>
-  </h3><p class="muted"><a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6101598,23.0396919,141m/data=!3m1!1e3!4m6!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp" target="_blank" rel="noopener">Кирил и Методий 16</a></p><p><a href="tel:+359888316052" class="cta">0888 316052</a><a href="tel:+35976602724" class="cta">076 602724</a></p>
+    <a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Перник</a>
+  </h3><p class="muted"><a href="https://www.google.com/maps/place/AUTO+TANEV/@42.6105903,23.0404742,3a,75y,133.34h,109.71t/data=!3m7!1e1!3m5!1sPatOxuj5bz0NVONV8rn5fg!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-19.708366723995795%26panoid%3DPatOxuj5bz0NVONV8rn5fg%26yaw%3D133.34027751297324!7i16384!8i8192!4m15!1m8!3m7!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!2sAUTO+TANEV!8m2!3d42.6104479!4d23.0408213!10e5!16s%2Fg%2F11fxwydsyp!3m5!1s0x14aacada4304e20d:0xcb9971a0a50d5c7e!8m2!3d42.6104479!4d23.0408213!16s%2Fg%2F11fxwydsyp?entry=ttu&g_ep=EgoyMDI1MDkwMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Кирил и Методий 16</a></p><p><a href="tel:+359888316052" class="cta">0888 316052</a><a href="tel:+35976602724" class="cta">076 602724</a></p>
 </div>
     </div>
   </section>
 
   <footer>
-    <div class="wrap">
-      <small>© <span id="year"></span> auto tanev</small>
+    <div class="wrap"><small>© <span id="year"></span> <a href="https://thermopiggy.github.io/web-dev-landing-page/" target="_blank" rel="noopener">design by webbadoo</a></small>
+
     </div>
   </footer>
 
@@ -245,7 +356,7 @@
       </div>
       <div class="row">
         <input id="q" type="text" placeholder="например гуми за VW Golf 7, 1.6 TDI, 2015" />
-       <a id="viberLink" href="viber://chat?number=%2B359988823462" target="_blank">питай ни във Viber</a>
+       <a id="viberLink" href="viber://chat?number=%2B359888316052" target="_blank">питай ни във Viber</a>
 
       </div>
     </div>
@@ -293,11 +404,25 @@ q.addEventListener('keydown',(e)=>{if(e.key==='Enter'){build();viberLink.click()
       .45 1 1 0 1.25.2 2.46.57 3.59.11.34.03.72-.24 1l-2.21 2.2z"/>
     </svg>
   </a>
-  <a href="viber://chat?number=%2B359988823462" class="viberBtn" aria-label="Viber чат">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <path d="M19.05 4.91C17.3 3.16 14.9 2 12.2 2 6.98 2 2.72 6.26 2.72 11.48c0 1.66.41 3.26 1.19 4.69L2 22l6.02-1.86c1.38.75 2.94 1.15 4.54 1.15 5.22 0 9.48-4.26 9.48-9.48 0-2.62-1.03-5.07-2.99-6.9zm-5.41 11.74c-1.17 0-2.35-.31-3.41-.9l-.24-.14-2.03.63.64-1.98-.16-.26a6.64 6.64 0 0 1-.94-3.45c0-3.65 2.97-6.61 6.61-6.61 1.77 0 3.44.69 4.7 1.94a6.61 6.61 0 0 1 1.92 4.69c0 3.65-2.97 6.61-6.61 6.61z"/>
-    </svg>
-  </a>
+ <a href="viber://chat?number=%2B359888316052" class="viberBtn" aria-label="Viber чат">
+  <img src="ViberLogo.png" alt="Viber" style="width:28px; height:28px;">
+</a>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll(".about-img");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // за да не се стартира пак
+      }
+    });
+  }, { threshold: 0.2 });
+
+  imgs.forEach(img => observer.observe(img));
+});
+</script>
 
 </body>
 </html>
