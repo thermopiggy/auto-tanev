@@ -597,18 +597,22 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = '';
   }
 
-  // Клик по миниатюра
+  // ✅ Спираме навигацията и отваряме лайтбокса
   document.addEventListener('click', (e)=>{
-    const a = e.target.closest('a[data-full]');
+    const a = e.target.closest('.charity .grid3 a');
     if(!a) return;
-    e.preventDefault();
-    openLB(a.getAttribute('data-full'));
+    const src = a.getAttribute('data-full') || a.getAttribute('href');
+    if(!src) return;
+    e.preventDefault();            // спира „връщането към хоме“
+    e.stopPropagation();
+    openLB(src);
+    return false;
   });
 
   // Затваряне
-  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+  lb.addEventListener('click', (e)=>{ if(e.target===lb) closeLB(); });
   closeBtn.addEventListener('click', closeLB);
-  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLB(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLB(); });
 })();
 </script>
 
