@@ -277,6 +277,27 @@ section[id] { scroll-margin-top: var(--nav-h); }
     }
   ]
 }
+    /* БЛАГОТВОРИТЕЛНИ ДЕЙНОСТИ */
+.charity{max-width:1180px;margin:34px auto;padding:0 18px}
+.charity h2{font-weight:900;margin:0 0 10px}
+.charity h3{font-weight:800;margin:22px 0 10px}
+.charity h4{font-weight:800;margin:14px 0 10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid3 a{display:block;border-radius:14px;overflow:hidden;border:1px solid var(--ring);box-shadow:var(--shadow)}
+.grid3 img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .2s}
+.grid3 a:hover img{transform:scale(1.02)}
+/* 3 колони и на мобилно, по изискване */
+@media (max-width:480px){
+  .grid3 img{aspect-ratio:1/1}
+}
+
+/* Лайтбокс за снимките */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:90;padding:14px}
+.lb.open{display:flex}
+.lb img{max-width:min(1200px,94vw);max-height:90vh;border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.lb-close{position:absolute;top:14px;right:16px;font-size:32px;line-height:1;color:#fff;border:0;background:transparent;cursor:pointer}
+
+    
 </script>
 
 </head>
@@ -318,6 +339,89 @@ section[id] { scroll-margin-top: var(--nav-h); }
 
   </section>
 
+<section id="charity" class="charity">
+  <h2>Благотворителни дейности</h2>
+
+  <!-- ЧИНАРИ -->
+  <h3>ЧИНАРИ</h3>
+  <div class="grid3">
+    <!-- качи файловете в assets/charity/chinari/ и остави имената, които вече генерирахме -->
+    <a href="#" data-full="assets/charity/chinari/chinar_1.webp"><img src="assets/charity/chinari/chinar_1.webp" alt="Чинар" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/chinari/chinar_2.webp"><img src="assets/charity/chinari/chinar_2.webp" alt="Чинар" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/chinari/chinar_3.webp"><img src="assets/charity/chinari/chinar_3.webp" alt="Чинар" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/chinari/chinar_4.webp"><img src="assets/charity/chinari/chinar_4.webp" alt="Чинар" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/chinari/chinar_5.webp"><img src="assets/charity/chinari/chinar_5.webp" alt="Чинар" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/chinari/chinar_6.webp"><img src="assets/charity/chinari/chinar_6.webp" alt="Чинар" loading="lazy"></a>
+  </div>
+
+  <!-- ЧЕШМИ -->
+  <h3>ЧЕШМИ</h3>
+  <div class="grid3">
+    <!-- използвай cheshma_*.webp; ако имаш само 2 в момента, добави още когато са готови -->
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_1.webp"><img src="assets/charity/cheshmi/cheshma_1.webp" alt="Чешма" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_2.webp"><img src="assets/charity/cheshmi/cheshma_2.webp" alt="Чешма" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_3.webp"><img src="assets/charity/cheshmi/cheshma_3.webp" alt="Чешма" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_4.webp"><img src="assets/charity/cheshmi/cheshma_4.webp" alt="Чешма" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_5.webp"><img src="assets/charity/cheshmi/cheshma_5.webp" alt="Чешма" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/cheshmi/cheshma_6.webp"><img src="assets/charity/cheshmi/cheshma_6.webp" alt="Чешма" loading="lazy"></a>
+  </div>
+
+  <!-- ПАРАКЛИСИ -->
+  <h3>ПАРАКЛИСИ</h3>
+
+  <h4>Райското пръскало</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/paraklisi/praskaloto/praskaloto_1.webp"><img src="assets/charity/paraklisi/praskaloto/praskaloto_1.webp" alt="Райското пръскало" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/praskaloto/praskaloto_2.webp"><img src="assets/charity/paraklisi/praskaloto/praskaloto_2.webp" alt="Райското пръскало" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/praskaloto/praskaloto_3.webp"><img src="assets/charity/paraklisi/praskaloto/praskaloto_3.webp" alt="Райското пръскало" loading="lazy"></a>
+  </div>
+
+  <h4>Рупите</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/paraklisi/rupite/rupite_1.webp"><img src="assets/charity/paraklisi/rupite/rupite_1.webp" alt="Рупите" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/rupite/rupite_2.webp"><img src="assets/charity/paraklisi/rupite/rupite_2.webp" alt="Рупите" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/rupite/rupite_3.webp"><img src="assets/charity/paraklisi/rupite/rupite_3.webp" alt="Рупите" loading="lazy"></a>
+  </div>
+
+  <h4>Кладница</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/paraklisi/kladnica/kladnica_1.webp"><img src="assets/charity/paraklisi/kladnica/kladnica_1.webp" alt="Кладница" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/kladnica/kladnica_2.webp"><img src="assets/charity/paraklisi/kladnica/kladnica_2.webp" alt="Кладница" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/paraklisi/kladnica/kladnica_3.webp"><img src="assets/charity/paraklisi/kladnica/kladnica_3.webp" alt="Кладница" loading="lazy"></a>
+  </div>
+
+  <!-- СКУЛПТУРИ -->
+  <h3>СКУЛПТУРИ</h3>
+
+  <h4>Скрино</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/skulpturi/skrino/skrino_1.webp"><img src="assets/charity/skulpturi/skrino/skrino_1.webp" alt="Скрино" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/skrino/skrino_2.webp"><img src="assets/charity/skulpturi/skrino/skrino_2.webp" alt="Скрино" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/skrino/skrino_3.webp"><img src="assets/charity/skulpturi/skrino/skrino_3.webp" alt="Скрино" loading="lazy"></a>
+  </div>
+
+  <h4>Израстване</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/skulpturi/izrastvane/izrastvane_1.webp"><img src="assets/charity/skulpturi/izrastvane/izrastvane_1.webp" alt="Израстване" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/izrastvane/izrastvane_2.webp"><img src="assets/charity/skulpturi/izrastvane/izrastvane_2.webp" alt="Израстване" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/izrastvane/izrastvane_3.webp"><img src="assets/charity/skulpturi/izrastvane/izrastvane_3.webp" alt="Израстване" loading="lazy"></a>
+  </div>
+
+  <h4>Кръстове</h4>
+  <div class="grid3">
+    <a href="#" data-full="assets/charity/skulpturi/krastove/krastat_1.webp"><img src="assets/charity/skulpturi/krastove/krastat_1.webp" alt="Кръстове" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/krastove/krastat_2.webp"><img src="assets/charity/skulpturi/krastove/krastat_2.webp" alt="Кръстове" loading="lazy"></a>
+    <a href="#" data-full="assets/charity/skulpturi/krastove/krastat_3.webp"><img src="assets/charity/skulpturi/krastove/krastat_3.webp" alt="Кръстове" loading="lazy"></a>
+  </div>
+</section>
+
+<!-- Лайтбокс елемент -->
+<div id="lb" class="lb" aria-modal="true" role="dialog">
+  <button class="lb-close" aria-label="Затвори">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+  
   <section id="contacts">
     <h2>Контакти</h2>
     <div class="grid">
@@ -422,6 +526,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   imgs.forEach(img => observer.observe(img));
 });
+</script>
+<script>
+  // Лайтбокс логика
+  (function(){
+    const lb = document.getElementById('lb');
+    const lbImg = document.getElementById('lbImg');
+    const closeBtn = lb.querySelector('.lb-close');
+
+    document.addEventListener('click', (e)=>{
+      const a = e.target.closest('a[data-full]');
+      if(a){
+        e.preventDefault();
+        const src = a.getAttribute('data-full');
+        lbImg.src = src;
+        lb.classList.add('open');
+      }
+    });
+
+    const close = ()=>{ lb.classList.remove('open'); lbImg.src=''; };
+    lb.addEventListener('click', (e)=>{ if(e.target===lb) close(); });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+  })();
 </script>
 
 </body>
