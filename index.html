@@ -292,6 +292,19 @@ section[id] { scroll-margin-top: var(--nav-h); }
   .nav-links{ display:none; }
   .nav-links.open{ display:flex; }
 }
+/* ПИН вляво – вече за всички устройства */
+.nav-pin{
+  position:fixed;
+  top:10px;
+  left:10px;
+  z-index:9999;
+  font-size:20px;
+}
+
+/* Корекция за да не припокрива други бутони */
+.navbar {
+  padding-left:45px;
+}
 
 </style>
   <script type="application/ld+json">
