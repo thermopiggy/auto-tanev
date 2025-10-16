@@ -280,6 +280,19 @@ section[id] { scroll-margin-top: var(--nav-h); }
   }
 }
 
+    /* контейнерът на навигацията да е позициониран */
+.nav { position: relative; }
+
+/* ПИН вляво и видим на мобилно */
+@media (max-width:768px){
+  .nav-pin{
+    position:fixed; left:10px; top:10px; z-index:9999; font-size:20px;
+  }
+  /* скрий списъка по подразбиране – отваря се с .open */
+  .nav-links{ display:none; }
+  .nav-links.open{ display:flex; }
+}
+
 </style>
   <script type="application/ld+json">
 {
@@ -507,17 +520,16 @@ section[id] { scroll-margin-top: var(--nav-h); }
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    const burger = document.getElementById('burger');
-    const menu = document.getElementById('menu');
-    burger.addEventListener('click', () => {
-      const open = menu.style.display === 'flex';
-      menu.style.display = open ? 'none' : 'flex';
-      if(!open){ menu.style.flexDirection = 'column'; menu.style.gap = '10px'; }
-    });
-    const modal = document.getElementById('askModal');
-    [document.getElementById('askBtn'), document.getElementById('askBtn2')].forEach(btn =>
-      btn.addEventListener('click', ()=> modal.classList.add('open'))
-    );
+   const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+if (burger && menu) {
+  burger.addEventListener('click', () => {
+    const open = menu.style.display === 'flex';
+    menu.style.display = open ? 'none' : 'flex';
+    if(!open){ menu.style.flexDirection = 'column'; menu.style.gap = '10px'; }
+  });
+}
+
     modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open'); });
     document.getElementById('closeModal').addEventListener('click', () => {
   modal.classList.remove('open');
