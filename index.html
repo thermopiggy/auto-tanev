@@ -306,6 +306,20 @@ section[id] { scroll-margin-top: var(--nav-h); }
 }
 .nav-pin:hover{ filter: grayscale(0) brightness(1); }
 
+    @media (max-width:768px){
+  .nav-links{
+    align-items: flex-end; /* всички бутони вдясно */
+    text-align: right;
+    padding-right: 10px;   /* лек вътрешен маргин от дясната стена */
+  }
+  .nav-links a{
+    width: auto;
+    align-self: flex-end;
+  }
+}
+
+
+    
 </style>
   <script type="application/ld+json">
 {
