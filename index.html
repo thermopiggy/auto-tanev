@@ -291,23 +291,12 @@ section[id] { scroll-margin-top: var(--nav-h); }
     /* контейнерът на навигацията да е позициониран */
 .nav { position: relative; }
 
-/* ПИН вляво и видим на мобилно */
-@media (max-width:768px){
-  .nav-pin{
-    position:fixed; left:10px; top:10px; z-index:9999; font-size:20px;
-  }
+
   /* скрий списъка по подразбиране – отваря се с .open */
   .nav-links{ display:none; }
   .nav-links.open{ display:flex; }
 }
-/* ПИН вляво – вече за всички устройства */
-.nav-pin{
-  position:fixed;
-  top:10px;
-  left:10px;
-  z-index:9999;
-  font-size:20px;
-}
+
 
 /* Корекция за да не припокрива други бутони */
 .navbar {
