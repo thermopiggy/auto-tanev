@@ -267,9 +267,16 @@ section[id] { scroll-margin-top: var(--nav-h); }
   align-items: center;
 }
 @media (max-width:768px){
-  .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:56px; right:0; width:200px; padding:10px; }
-  .nav-links.open { display:flex; }
-  .nav-toggle { display:flex; }
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    position:absolute; top:56px; right:0; width:220px; padding:12px;
+    background: rgba(17,17,17,0.82);   /* полупрозрачен */
+    backdrop-filter: blur(4px);         /* меко замъгляване (по избор) */
+    border-radius: 12px;                /* по-приятни ръбове (по избор) */
+  }
+  .nav-links.open{ display:flex; }
+}
 
 
     /* контейнерът на навигацията да е позициониран */
