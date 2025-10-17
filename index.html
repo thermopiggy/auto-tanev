@@ -270,23 +270,31 @@ section[id] { scroll-margin-top: var(--nav-h); }
   .nav-links { display:none; flex-direction:column; background:#111; position:absolute; top:56px; right:0; width:200px; padding:10px; }
   .nav-links.open { display:flex; }
   .nav-toggle { display:flex; }
-  /* Пинът остава винаги видим вляво */
-.nav-pin {
+/* единен стил за пина */
+.nav-pin{
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 14px;
+  left: 14px;
   z-index: 9999;
+
+  display: block;
   width: 32px;
   height: 48px;
-  background: url("https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png") no-repeat center;
-  background-size: contain;
-  filter: grayscale(100%) brightness(1.4);
-  transition: filter 0.3s ease;
-}
 
-.nav-pin:hover {
-  filter: grayscale(0%) brightness(1);
+  /* показвай само формата на Google pin */
+  background: url("https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png") no-repeat center / contain;
+
+  /* скрий emoji-текста вътре, за да не се дублира */
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+
+  /* безцветен до hover */
+  filter: grayscale(100%) brightness(1.45);
+  transition: filter .25s ease;
 }
+.nav-pin:hover{ filter: grayscale(0) brightness(1); }
+
 
     /* контейнерът на навигацията да е позициониран */
 .nav { position: relative; }
