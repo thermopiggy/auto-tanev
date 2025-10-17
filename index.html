@@ -267,13 +267,15 @@ section[id] { scroll-margin-top: var(--nav-h); }
   align-items: center;
 }
 @media (max-width:768px){
+  .nav-toggle { display:flex; } /* показваме хамбургера */
+
   .nav-links{
     display:none;
     flex-direction:column;
     position:absolute; top:56px; right:0; width:220px; padding:12px;
-    background: rgba(17,17,17,0.82);   /* полупрозрачен */
-    backdrop-filter: blur(4px);         /* меко замъгляване (по избор) */
-    border-radius: 12px;                /* по-приятни ръбове (по избор) */
+    background: rgba(17,17,17,0.60);   /* по-светъл, полупрозрачен */
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
   }
   .nav-links.open{ display:flex; }
 }
