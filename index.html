@@ -271,13 +271,21 @@ section[id] { scroll-margin-top: var(--nav-h); }
   .nav-links.open { display:flex; }
   .nav-toggle { display:flex; }
   /* Пинът остава винаги видим вляво */
-  .nav-pin {
-    position:fixed;
-    top:10px;
-    left:10px;
-    z-index:9999;
-    font-size:20px;
-  }
+.nav-pin {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 9999;
+  width: 32px;
+  height: 48px;
+  background: url("https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png") no-repeat center;
+  background-size: contain;
+  filter: grayscale(100%) brightness(1.4);
+  transition: filter 0.3s ease;
+}
+
+.nav-pin:hover {
+  filter: grayscale(0%) brightness(1);
 }
 
     /* контейнерът на навигацията да е позициониран */
